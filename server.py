@@ -1,16 +1,24 @@
-def addNumbers(x, y):
-    return int(x) + int(y)
+
+from flask import Flask
+import socket
+
+app = Flask(__name__)
 
 
-def multiplyTwoNumbers(x, y):
-    c = int(x) * int(y)
-    return c
+@app.route("/")
+def hello():
+    return f"Hello World"
+
+
+@app.route("/ping")
+def ping():
+    return f"pong"
+
+
+@app.route("/anant")
+def tyagi():
+    return f"tyagi"
 
 
 if __name__ == "__main__":
-    a = input("enter a number: ")
-    b = input("enter a second number: ")
-    c = addNumbers(a, b)
-    print(c)
-    c = multiplyTwoNumbers(a, b)
-    print(c)
+    app.run(host="0.0.0.0", port=int("5003"), debug=True)
